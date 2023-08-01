@@ -1,9 +1,9 @@
 package main
 
 import (
-	"./cacheClient"
 	"flag"
 	"fmt"
+	"go-implement-your-cache-server/cache-benchmark/cacheClient"
 	"math/rand"
 	"strings"
 	"time"
