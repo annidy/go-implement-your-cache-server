@@ -1,9 +1,9 @@
 package main
 
 import (
-	"../cache-benchmark/cacheClient"
 	"flag"
 	"fmt"
+	"go-implement-your-cache-server/cache-benchmark/cacheClient"
 )
 
 func main() {
