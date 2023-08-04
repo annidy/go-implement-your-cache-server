@@ -1,8 +1,7 @@
 package cache
 
-// #include "rocksdb/c.h"
-// #cgo CFLAGS: -I${SRCDIR}/../../../rocksdb/include
-// #cgo LDFLAGS: -L${SRCDIR}/../../../rocksdb -lrocksdb -lz -lpthread -lsnappy -lstdc++ -lm -O3
+// #include <rocksdb/c.h>
+// #cgo LDFLAGS: -lrocksdb -lz -lpthread -lsnappy -lstdc++ -lm -O3
 import "C"
 import "runtime"
 
@@ -11,7 +10,7 @@ func newRocksdbCache(ttl int) *rocksdbCache {
 	C.rocksdb_options_increase_parallelism(options, C.int(runtime.NumCPU()))
 	C.rocksdb_options_set_create_if_missing(options, 1)
 	var e *C.char
-	db := C.rocksdb_open_with_ttl(options, C.CString("/mnt/rocksdb"), C.int(ttl), &e)
+	db := C.rocksdb_open_with_ttl(options, C.CString("/tmp/rocksdb"), C.int(ttl), &e)
 	if e != nil {
 		panic(C.GoString(e))
 	}

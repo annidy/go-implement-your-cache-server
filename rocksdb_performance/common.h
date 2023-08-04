@@ -35,7 +35,7 @@ variables_map parse(int argc, char** argv, options_description* additional)
     return vm;
 }
 
-DB* opendb(bool readonly = false, const std::string& dir = "/mnt/rocksdb", int ttl = 0)
+DB* opendb(bool readonly = false, const std::string& dir = "/tmp/rocksdb", int ttl = 0)
 {
     DB* db;
     Options options;
