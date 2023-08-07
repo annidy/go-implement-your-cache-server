@@ -1,8 +1,8 @@
 package tcp
 
 import (
-	"../cache"
-	"../cluster"
+	"go-implement-your-cache-server/cache"
+	"go-implement-your-cache-server/cluster"
 	"net"
 )
 

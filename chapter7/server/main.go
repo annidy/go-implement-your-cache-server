@@ -1,11 +1,11 @@
 package main
 
 import (
-	"./cache"
-	"./cluster"
-	"./http"
-	"./tcp"
 	"flag"
+	"go-implement-your-cache-server/cache"
+	"go-implement-your-cache-server/cluster"
+	"go-implement-your-cache-server/http"
+	"go-implement-your-cache-server/tcp"
 	"log"
 )
 
