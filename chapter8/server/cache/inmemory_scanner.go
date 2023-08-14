@@ -45,3 +45,20 @@ func (c *inMemoryCache) NewScanner() Scanner {
 	}()
 	return &inMemoryScanner{pair{}, pairCh, closeCh}
 }
+
+func (c *inMemoryCache2) NewScanner() Scanner {
+	pairCh := make(chan *pair)
+	closeCh := make(chan struct{})
+	go func() {
+		defer close(pairCh)
+		c.c.Range(func(k, v any) bool {
+			select {
+			case <-closeCh:
+				return false
+			case pairCh <- &pair{k.(string), []byte(v.(string))}:
+			}
+			return true
+		})
+	}()
+	return &inMemoryScanner{pair{}, pairCh, closeCh}
+}
